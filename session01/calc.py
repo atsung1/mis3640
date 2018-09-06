@@ -39,5 +39,5 @@ end_m = (end_h-int(end_h))*60
 print('Breakfast is {:d}:{:d}am'.format(int(end_h), int(end_m)))
 
 #question 4: grade
-g = (89-82)/82
+g = ((89-82)/82)*100
 print('The percentage increase of my grade is {:.1f}%'.format(g))
