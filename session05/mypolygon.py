@@ -104,7 +104,7 @@ def circleflower(t, n, r, angle):
     t.sety(-0.9*r*math.cos(angle/2))
     t.pd()
     t.circle(0.9*r*math.cos(angle/2))
-# circleflower(jack, 6, 100, 45)
+circleflower(jack, 6, 100, 45)
 
 #3.2
 def yinyang(t, r):
@@ -125,7 +125,7 @@ def yinyang(t, r):
     t.sety(-2*r/3)
     t.pd()
     t.circle(r/6)
-# yinyang(jack,100)
+yinyang(jack,100)
 
 #3.3
 def pizza(t, r):
@@ -140,3 +140,5 @@ pizza(jack, 100)
 
 
 turtle.mainloop()
+
+#in command prompt type python -m turtledemo
