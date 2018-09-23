@@ -5,7 +5,7 @@ def move(n, source, bridge, destination):
         move(n-1, bridge, source, destination)
 
 
-move(3, 'A', 'B', 'C')
+move(4, 'A', 'B', 'C')
 # Expected output:
 # A --> C
 # A --> B
