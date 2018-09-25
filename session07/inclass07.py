@@ -1,8 +1,9 @@
-# result = 0
+result = 0
 
 # for i in range(10):
 #     print(i+1)
 #     result = result + i + 1
+# print(result)
 
 # for i in range(10):
 #     print('current number to be added:', i+1)
@@ -18,7 +19,7 @@
 
 # print('The final result:', result)
 
-#exercise 1.3 sum of all odd integers from 1 to 1000
+# exercise 1.3 sum of all odd integers from 1 to 1000
 # for i in range(1, 1001):
 #     if i%2 == 1:
 #         result = result + i
@@ -35,12 +36,12 @@
 # for i in range(1,11,3):
 #     print(i)
 
-# result = 1
+result = 1
 # #factorial of a number 10 using for loopo
 # for i in range (1,10):
 #     result = result * i
 # print(result)
-# #last number is exclusive
+#last number is exclusive
 
 # import time
 # def countdown(n):
@@ -107,9 +108,34 @@
 
 # print('Done!')
 
-mysum = 0
-for i in range(5, 11, 2):
-    mysum += i
-    if mysum == 5:
-        break
-print(mysum)
+# mysum = 0
+# for i in range(5, 11, 2):
+#     mysum += i
+#     if mysum == 5:
+#         break
+# print(mysum)
+
+a = 4
+x = 3
+y = (x + a/x) / 2
+print(y)
+
+x = y
+y = (x + a/x) / 2
+print(y)
+
+x = y
+y = (x + a/x) / 2
+print(y)
+
+x = y
+y = (x + a/x) / 2
+print(y)
+
+x = y
+y = (x + a/x) / 2
+print(y)
+
+x = y
+y = (x + a/x) / 2
+print(y)
