@@ -94,5 +94,62 @@
 # 'a' in team # returns True
 #does this container contain the elements
 
-groceries = 'bananas apples bread'
-groceries.split()
+# groceries = 'bananas apples bread'
+# groceries.split()
+
+# team = 'New England Patriots'
+# index = team.find('a')
+# print(index)
+# print(team.find('En'))
+# print(team.find('a', 10))
+# #slices the string and finds awithin the slice (after 10)
+# team.casefold()
+# team.center(50)
+# team.count('a')
+# team.encode()
+# team.endswith('Patr')
+# 'the sum of 1 + 2 is {hello}'.format(hello=3)
+
+# class Default(dict):
+#     def __missing__(self, key):
+#         return key
+# print('{name} was born in {country}'.format_map(Default(name='Guido')))
+
+# team.join(['a', 'b', 'c'])
+
+# team.ljust(50)
+# team.lower()
+# team.lstrip('e')
+# 'www.example.com'.lstrip('cmowz.')
+# team.partition('n')
+# team.replace('Patriots', 'Seahawks')
+# team.rfind('a')
+# team.rindex('a')
+# team.rjust(50)
+# team.split()
+# team.split(maxsplit = 1)
+# team.split('a', 1)
+# team.strip()
+# a = '#....... Section 3.2.1 Issue #32 .......'
+# a.strip('.# S 2 ! ')
+# a.swapcase().swapcase()
+# b = 'hello hello hello lsadfkl'
+# b.title()
+# print
+
+# #exercise 3
+# # Split
+# x = 'the quick brown fox jumps over the lazy dog'
+# new_x = x.split(' ')
+# for word in new_x:
+#     print(word)
+
+# # Strip
+# y = '       ;lakjf.                  '
+# new_y = y.strip()
+# print(new_y)
+
+# # Replace
+# a = 'Hello hello hello hello.'
+# new_a = a.replace('h', 'H')
+# print(new_a)

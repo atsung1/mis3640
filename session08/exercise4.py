@@ -1,40 +1,47 @@
-# #exercise 3
-# # Split
-# x = 'the quick brown fox jumps over the lazy dog'
-# new_x = x.split(' ')
-# for word in new_x:
-#     print(word)
+# #exercise 3.1
+def price(item):
+    price = 0
+    item.lower()
+    for letter in item:
+        price += ord(letter) - 96
+    return price
 
-# # Strip
-# y = '       ;lakjf.                  '
-# new_y = y.strip()
-# print(new_y)
+# print(price('bananas'))
 
-# # Replace
-# a = 'Hello hello hello hello.'
-# new_a = a.replace('h', 'H')
-# print(new_a)
+# def receipt(groceries):
+#     total = 0
+#     for item in groceries:
+#         total += price(item)
+#         print('{} ${}'.format(item, price(item)))
+#     print('-'*24)
+#     print('Total ${}'.format(total))
 
+# buy = ['bananas', 'rice', 'paprika', 'potato chips']
+# receipt(buy)
 
-groceries = ['bananas', 'rice', 'paprika', 'potato chips']
+# #exercise 3.2
+# def receipt2(groceries):
+#     total = 0
+#     for item in groceries:
+#         total += price(item)
+#         print('{} ${:.2f}'.format(item.ljust(len()), price(item)))
+#     print('-'*24)
+#     print('Total'.ljust(16), '${:.2f}'.format(total))
 
-def receipt(groceries):
-    sum = 0
-    max_length = len(max(items, key=len)) + 10
+# receipt2(buy)
+
+#exercise 3.3
+def receipt3(groceries):
+    total = 0
+    longest=len(groceries[1])
     for item in groceries:
-        price = 0
-        for letter in item:
-            price += ord(letter)-96
-        print(f'{item} ${price}')
-        sum += price
-        price_string = '${0:.2f}'.format(price)
-        num_of_spaces = max_length - len(item) - len(price_string)
-        item_string = item + ' ' * num_of_spaces + price_string
-        print(item_string)
+        if len(item) > longest:
+            longest = len(item)
+    for item in groceries:
+        total += price(item)
+        print('{} ${:.2f}'.format(item.ljust(longest+5), price(item)))
+    print('-'*3*longest)
+    print('Total'.ljust(longest+4), '${:.2f}'.format(total))
 
-    print('-' * max_length)
-    total_price_string = '${0:.2f}'.format(total_price)
-    num_of_spaces = max_length - len('Total') - len(total_price_string)
-    print('Total' + ' ' * num_of_spaces + total_price_string)
-
-receipt(groceries)
+buy1 = ['apples', 'bananas', 'rice']
+receipt3(buy1)
