@@ -54,12 +54,33 @@
 # print(t)
 
 #exercise 2
-t = ['a', 'b', 'c']
-t.append('d')
-a = [1,2,3]
-c = [4,5]
-a.extend(c)
-print(a)
-b = [5,4,7,2,6,7]
-b.sort()
-print(b)
+# t = ['a', 'b', 'c']
+# t.append('d')
+# a = [1,2,3]
+# c = [4,5]
+# a.extend(c)
+# print(a)
+# b = [5,4,7,2,6,7]
+# b.sort()
+# print(b)
+
+# >>> fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
+# >>> fruits.count('apple')
+# 2
+# >>> fruits.count('tangerine')
+# 0
+# >>> fruits.index('banana')
+# 3
+# >>> fruits.index('banana', 4)  # Find next banana starting a position 4
+# 6
+# >>> fruits.reverse()
+# >>> fruits
+# ['banana', 'apple', 'kiwi', 'banana', 'pear', 'apple', 'orange']
+# >>> fruits.append('grape')
+# >>> fruits
+# ['banana', 'apple', 'kiwi', 'banana', 'pear', 'apple', 'orange', 'grape']
+# >>> fruits.sort()
+# >>> fruits
+# ['apple', 'apple', 'banana', 'banana', 'grape', 'kiwi', 'orange', 'pear']
+# >>> fruits.pop()
+# 'pear'
