@@ -1,5 +1,5 @@
 # Term Project Proposal: Makeup Color Matching
-Team Members: Jonathan Beltran, Jingyu (Jack) He, Pranjal Joshi, Angela Tsung, Aaron Wendell
+Team Members: Jonathan Beltran, Jingyu (Jack) He, Pranjal Joshi, Angela Tsung, Aaron Wendell\
 MIS 3640
 
 ## The Big Idea
@@ -13,7 +13,7 @@ Collectively, we hope to learn to apply design thinking and agile methodology to
 
 ### Individual Goals:
 * Jonathan: Have experience on how to build a solution/product by using Python and other programming platforms.
-* Jack: Use Python as a tool to provide creative solution to meet task requirementsas a entry level developer.
+* Jack: Use Python as a tool to provide creative solution to meet task requirements as a entry level developer.
 * Pranjal: Get a first hand experience on how the final product looks and what kind of elements are used to build it. 
 * Angela: Experience project management with a emphasis on the technical aspect, learn and apply object-relational mapping
 * Aaron: Create a python program that connects to other platforms such as SQL, html, etc.
