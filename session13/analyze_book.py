@@ -11,7 +11,7 @@ def process_file(filename, skip_header):
     returns: map from each word to the number of times it appears.
     """
     hist = {}
-    fp = open(filename)
+    fp = open(filename, encoding = 'utf8')
 
     if skip_header:
         skip_gutenberg_header(fp)
@@ -20,6 +20,7 @@ def process_file(filename, skip_header):
         if line.startswith('*** END OF THIS PROJECT'):
             break
         # INSERT CODE BELOW
+        line = line.replace('-', ' ')
         strippables = string.punctuation + string.whitespace
         for word in line.split():
             word = word.strip(strippables)
@@ -52,16 +53,21 @@ def different_words(hist):
     return len(hist)
 
 
-def most_common(hist):
+def most_common(hist, excluding_stopwords=True):
     """Makes a list of word-freq pairs in descending order of frequency.
 
     hist: map from word to frequency
 
     returns: list of (frequency, word) pairs
     """
+    exclude_list = process_file('session13/stopwords.txt', skip_header=False)
     new = []
     for word, frequency in hist.items():
-        new.append((word, frequency))
+        if excluding_stopwords:
+            if word not in exclude_list:
+                new.append((frequency, word))
+        else:
+            new.append((frequency, word))
     new.sort()
     new.reverse()
     return new
@@ -103,25 +109,25 @@ def random_word(hist):
 
 def main():
     hist = process_file('session13/Pride and Prejudice.txt', skip_header=True)
-    print(hist)
-    print('Total number of words:', total_words(hist))
-    print('Number of different words:', different_words(hist))
+    # print(hist)
+    # print('Total number of words:', total_words(hist))
+    # print('Number of different words:', different_words(hist))
 
     t = most_common(hist)
     print('The most common words are:')
     for freq, word in t[0:20]:
         print(word, '\t', freq)
 
-    words = process_file('session13/words.txt', skip_header=False)
+    # words = process_file('session13/words.txt', skip_header=False)
 
-    diff = subtract(hist, words)
-    print("The words in the book that aren't in the word list are:")
-    for word in diff.keys():
-        print(word, end=' ')
+    # diff = subtract(hist, words)
+    # print("The words in the book that aren't in the word list are:")
+    # for word in diff.keys():
+    #     print(word, end=' ')
 
-    print("\n\nHere are some random words from the book")
-    for i in range(100):
-        print(random_word(hist), end=' ')
+    # print("\n\nHere are some random words from the book")
+    # for i in range(100):
+    #     print(random_word(hist), end=' ')
 
 
 if __name__ == '__main__':
