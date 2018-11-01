@@ -1,3 +1,5 @@
+import copy
+
 class Time:
     """Represents the time of day.
 
@@ -5,8 +7,8 @@ class Time:
     """
 
 # time = Time()
-# time.hour = 1
-# time.minute = 50
+# time.hour = 3
+# time.minute = 12
 # time.second = 30
 
 # print(time.hour, time.minute, time.second)
@@ -19,16 +21,17 @@ class Time:
 # print(later.hour, later.minute, later.second)
 
 
-
 """"""""""""""""""""""""""""""""""""
 # Exercise 1
 """"""""""""""""""""""""""""""""""""
+
 
 def print_time(t):
     """Prints a string representation of the time.
 
     t: Time object
     """
+    print('{:02d}:{:02d}:{:02d}'.format(t.hour, t.minute, t.second))
 
 # print_time(time)
 # print_time(later)
@@ -36,17 +39,17 @@ def print_time(t):
 
 def is_after(t1, t2):
     """Returns True if t1 is after t2; false otherwise."""
+    return t1.hour*60*60 + t1.minute*60 + t1.second > t2.hour*60*60 + t2.minute*60 + t2.second
 
 
 # print(is_after(time, later))
 # print(is_after(later, time))
 
 
-
-
 """"""""""""""""""""""""""""""""""""
 # Prototyping
 """"""""""""""""""""""""""""""""""""
+
 
 def add_time(t1, t2):
     """Adds two time objects.
@@ -55,12 +58,19 @@ def add_time(t1, t2):
 
     returns: Time
 
-    TO-DO: improve this function
+    TO-DO: improve this function DONE!
+    This is a pure function because it doesn't modify any past data
     """
     sum = Time()
     sum.hour = t1.hour + t2.hour
     sum.minute = t1.minute + t2.minute
     sum.second = t1.second + t2.second
+    if sum.second >= 60:
+        sum.minute += sum.second//60
+        sum.second = sum.second%60
+    if sum.minute >= 60:
+        sum.hour += sum.minute//60
+        sum.minute = sum.minute%60
     return sum
 
 # Uncomment below for testing
@@ -80,7 +90,9 @@ def add_time(t1, t2):
 
 
 def increment(time, seconds):
-    """Adds seconds to a Time object."""
+    """Adds seconds to a Time object.
+    This is a modifier.
+    """
     time.second += seconds
 
     if time.second >= 60:
@@ -91,10 +103,39 @@ def increment(time, seconds):
         time.minute -= 60
         time.hour += 1
 
+    return time
+
+
+""""""""""""""""""""""""""""""""""""
+# Exercise 3
+""""""""""""""""""""""""""""""""""""
+
+
+def increment_2(time, seconds):
+    """return a Time object after incrementing"""
+    sum = copy.copy(time)
+    sum.second += seconds
+    if sum.second >= 60:
+        sum.minute += sum.second//60
+        sum.second = sum.second%60
+    if sum.minute >= 60:
+        sum.hour += sum.minute//60
+        sum.minute = sum.minute%60
+    return sum
+
+#uncomment below for testing
+
+# start = Time()
+# start.hour = 9
+# start.minute = 45
+# start.second = 59
+# a = increment_2(start, 59)
+# print_time(a)
 
 """"""""""""""""""""""""""""""""""""
 # Designed Development
 """"""""""""""""""""""""""""""""""""
+
 
 def time_to_int(time):
     """Computes the number of seconds since midnight.
@@ -117,10 +158,15 @@ def int_to_time(seconds):
     return time
 
 
+def add_time_2(t1, t2):
+    seconds = time_to_int(t1) + time_to_int(t2)
+    return int_to_time(seconds)
+
 
 """"""""""""""""""""""""""""""""""""
-# Exercise 3
+# Exercise 4
 """"""""""""""""""""""""""""""""""""
+
 
 def substract_time(t1, t2):
     """Substracts two time objects.
@@ -129,15 +175,23 @@ def substract_time(t1, t2):
 
     returns: Time
     """
+    if is_after(t1, t2):
+        seconds = time_to_int(t1) - time_to_int(t2)
+        return int_to_time(seconds)
+    elif is_after(t2, t1):
+        seconds = time_to_int(t2) - time_to_int(t1)
+        return int_to_time(seconds)
+    else:
+        return 0
 
 # print_time(substract_time(done, duration))
 # print_time(substract_time(time, later))
 
 
-
 """"""""""""""""""""""""""""""""""""
 # Error handling
 """"""""""""""""""""""""""""""""""""
+
 
 def valid_time(time):
     """Checks whether a Time object satisfies the invariants.
@@ -153,8 +207,6 @@ def valid_time(time):
     return True
 
 
-
- 
 def add_time2(t1, t2):
     """Adds two time objects.
 
@@ -162,23 +214,29 @@ def add_time2(t1, t2):
 
     returns: Time
     """
-    # assert valid_time(t1) and valid_time(t2)
+    assert valid_time(t1) and valid_time(t2)
+    # if not valid_time(t1) or not valid_time(t2):
+    #     raise ValueError('invalid Time object in add_time')
     seconds = time_to_int(t1) + time_to_int(t2)
     return int_to_time(seconds)
 
 # done = add_time2(start, duration)
 # print_time(done)
-
+# another = add_time2(done, duration)
+# print_time(another)
 
 
 """"""""""""""""""""""""""""""""""""
-# Exercise 4
+# Exercise 5
 """"""""""""""""""""""""""""""""""""
+
 
 def mul_time(t1, factor):
     """Multiplies a Time object by a factor."""
-    pass
-    
+    assert valid_time(t1)
+    seconds = time_to_int(t1) * factor
+    return int_to_time(int(seconds)
+
 
 # print_time(time)
 # print('after multiplied by 5:', end=' ')
@@ -202,9 +260,31 @@ def main():
     print_time(run_time)
 
     # what time does the movie end?
-    end_time = add_time2(noon_time, run_time)
+    end_time = add_time(noon_time, run_time)
     print('Ends at', end=' ')
     print_time(end_time)
+
+    print('Does it end after it begins?', end=' ')
+    print(is_after(end_time, noon_time))
+
+    print('Home by', end=' ')
+    travel_time = 600      # 10 minutes
+    home_time = increment(end_time, travel_time)
+    print_time(home_time)
+
+    race_time = Time()
+    race_time.hour = 1
+    race_time.minute = 34
+    race_time.second = 5
+
+    print('Half marathon time', end=' ')
+    print_time(race_time)
+
+    distance = 13.1       # miles
+    pace = mul_time(race_time, 1 / distance)
+
+    print('Time per mile', end=' ')
+    print_time(pace)
 
 
 if __name__ == '__main__':
